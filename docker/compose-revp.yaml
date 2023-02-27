@@ -1,0 +1,47 @@
+version: '3.7'
+services:
+ 
+  db: 
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - default
+    volumes:
+      - db_data:/var/lib/postgres/data
+
+  backend:
+    image: phisit11/nginx-golang:0227
+    volumes:
+      - static_data:/usr/src/app/static
+    networks:
+      - webproxy
+      - default
+    depends_on:
+      - db  
+    deploy:
+      replicas: 1
+      labels:
+        - traefik.docker.network=webproxy
+        - traefik.enable=true
+        - traefik.constraint-label=webproxy
+        - traefik.http.routers.spcn29swarm02-https.entrypoints=websecure
+        - traefik.http.routers.spcn29swarm02-https.rule=Host("spcn29swarm02.xops.ipv9.me")
+        - traefik.http.routers.spcn29swarm02-https.tls.certresolver=defauit
+        - traefik.http.services.spcn29swarm02.loadbalancer.server.port=80
+      restart_policy:
+        condition: any
+      update_config:
+        delay: 5s
+
+      
+volumes:
+    static_data:
+    db_data:
+
+networks:
+    default:
+      driver: overlay
+    webproxy:
+      external: true
