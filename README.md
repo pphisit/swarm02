@@ -2,7 +2,7 @@
 ## nginx-golang
 
 ### Ref
-* https://github.com/docker/awesome-compose/tree/master/nginx-nodejs-redis
+* https://github.com/docker/awesome-compose/tree/master/nginx-golang
 ### url
 * https://spcn29swarm01.xops.ipv9.me/
 ### wakatime project
