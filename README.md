@@ -134,8 +134,9 @@ version: '3.7'
 services:
  
  db: 
+    image: postgres
     environment:
-     POSTGRES_USER: postgres
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     networks:
       - default
