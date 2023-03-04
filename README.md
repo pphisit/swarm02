@@ -5,8 +5,10 @@
 * https://github.com/docker/awesome-compose/tree/master/nginx-nodejs-redis
 ### url
 * https://spcn29swarm01.xops.ipv9.me/
+### wakatime project
+* https://wakatime.com/@spcn29/projects/nkcbladfhw
 
-ถ้าทำตามswarm01 แล้ว สามารถทำขั้นตอน ... ได้เลย
+ถ้าทำตามswarm01 แล้ว สามารถทำขั้นตอน clone แอพ จาก github ได้เลย
 ### ขั้นตอนการติดตั้งใน VM
 1. สร้าง VM โดยมี spec ดังนี้
     * CPU 2 cores
@@ -22,7 +24,27 @@
     ```
     timedatectl set-timezone Asia/Bangkok
     ```
-3. ติดตั้ง docker engine 
+3. ตรวจสอบ IP address ของ VM เพื่อ Remote ssh
+    ```
+    ip a
+    ```
+### เชื่อมต่อ Remote ssh ผ่าน VS Code และติดตั้ง docker engine 
+1. ติดตั้ง Docker, wakatime และ ssh remote ผ่าน VS Code
+2. เชื่อมต่อ Remote ssh 
+    * กดปุ่นสีเขียวด้านซ้ายล่าง
+
+ใส่รูป 
+    กด Connect to Host > Configure SSH Hosts > /Users/p/.ssh/config > ใส่คำสั่งด้านล่าง
+
+    
+        Host        // ชื่อ Host ที่ต้องการตั้ง
+        HostName    // ip address
+        User        // ชื่อ hostname จากเครื่องที่จะเชื่อม
+    
+
+4. ติดตั้ง Docker, wakatime ที่เครื่อง SSH ที่เชื่อมต่อ 
+
+5. ติดตั้ง docker engine 
     ```
     apt update; apt upgrade -y #อัปเดตแพ็คเกจภายในเครื่อง
 
@@ -56,6 +78,8 @@
     ln -s /etc/machine-id /var/lib/dbus/machine-id
     init 0
     ```
+
+
 ### เตรียม stack swarm  
 1. สร้าง Token 
     เพื่อนำไปใส่ที่ Node ที่ต้องการให้เชื่อมต่อ
@@ -71,7 +95,7 @@
     ```
     docker node ls
     ```
-### ติดตั้ง Portainer CE Docker swarm
+### deploy portainer for swarm 
 1.  ดาวน์โหลดและติดตั้ง
     ```
     curl -L https://downloads.portainer.io/ce2-17/portainer-agent-stack.yml -o portainer-agent-stack.yml
@@ -79,5 +103,3 @@
     ```
     docker stack deploy -c portainer-agent-stack.yml portainer
     ```
-
-
