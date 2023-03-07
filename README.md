@@ -4,7 +4,7 @@
 ### Ref
 * https://github.com/docker/awesome-compose/tree/master/nginx-golang
 ### url
-* https://spcn29swarm01.xops.ipv9.me/
+* https://spcn29swarm02.xops.ipv9.me/
 ### wakatime project
 * https://wakatime.com/@spcn29/projects/nkcbladfhw
 ---
@@ -190,7 +190,7 @@ networks:
 ```    
 4. Add an environment variables
     * Environment variables > Add an environment variables
-    * name APPNAME value spcns29warm02
+    * name APPNAME value spcns29swarm02
 5. ทดสอบการใช้งาน 
     * ไปที่ https://spcn29swarm02.xops.ipv9.me/  
     ถ้าสามารถใช้งานได้จะขึ้นหน้าตาดังรูปด้านล่าง
